@@ -24,13 +24,6 @@ namespace KnotsAndCrosses
             Text = frmTitle;
             MaximizeBox = frmMaximizable;
         }
-        public frmMain(Int16 frmSizeX, Int16 frmSizeY, FormStartPosition frmPostiion, String frmTitle, Boolean frmMaximizable)
-        {
-            InitializeComponent();
-            Size = new Size(frmSizeX, frmSizeY);
-            StartPosition = frmPostiion;
-            Text = frmTitle;
-            MaximizeBox = frmMaximizable;
-        }
+
     }
 }
