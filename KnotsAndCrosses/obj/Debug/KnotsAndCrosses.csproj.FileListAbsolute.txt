@@ -1,0 +1,10 @@
+F:\Git\KnotsAndCrosses\KnotsAndCrosses\KnotsAndCrosses\bin\Debug\KnotsAndCrosses.exe.config
+F:\Git\KnotsAndCrosses\KnotsAndCrosses\KnotsAndCrosses\bin\Debug\KnotsAndCrosses.exe
+F:\Git\KnotsAndCrosses\KnotsAndCrosses\KnotsAndCrosses\bin\Debug\KnotsAndCrosses.pdb
+F:\Git\KnotsAndCrosses\KnotsAndCrosses\KnotsAndCrosses\obj\Debug\KnotsAndCrosses.csprojAssemblyReference.cache
+F:\Git\KnotsAndCrosses\KnotsAndCrosses\KnotsAndCrosses\obj\Debug\KnotsAndCrosses.Properties.Resources.resources
+F:\Git\KnotsAndCrosses\KnotsAndCrosses\KnotsAndCrosses\obj\Debug\KnotsAndCrosses.csproj.GenerateResource.cache
+F:\Git\KnotsAndCrosses\KnotsAndCrosses\KnotsAndCrosses\obj\Debug\KnotsAndCrosses.csproj.CoreCompileInputs.cache
+F:\Git\KnotsAndCrosses\KnotsAndCrosses\KnotsAndCrosses\obj\Debug\KnotsAndCrosses.exe
+F:\Git\KnotsAndCrosses\KnotsAndCrosses\KnotsAndCrosses\obj\Debug\KnotsAndCrosses.pdb
+F:\Git\KnotsAndCrosses\KnotsAndCrosses\KnotsAndCrosses\obj\Debug\KnotsAndCrosses.frmMain.resources

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,10 @@ namespace KnotsAndCrosses
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            frmMain frmMain = new frmMain(new Size(360, 360), FormStartPosition.CenterScreen, "Knots & Crosses", false);
+
+            Application.Run(frmMain);
         }
     }
 }
