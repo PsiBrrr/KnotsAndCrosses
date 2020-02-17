@@ -31,19 +31,7 @@ namespace KnotsAndCrosses
             };
             return lLabel;
         }
-        public Button addButton(Button bButton, Point pLocation, Size sSize, Int16 tTag, String sText, System.EventHandler click)
-        {
-            bButton = new Button
-            {
-                Location = pLocation,
-                Size = sSize,
-                Tag = tTag,
-                Text = sText
-            };
-            bButton.Click += click;
-            return bButton;
-        }
-        public Button addButton(Button bButton, Point pLocation, Size sSize, Int16 tTag, String sText, Color cBackColor, System.EventHandler click)
+        public Button addButton(Button bButton, Point pLocation, Size sSize, int tTag, String sText, Color cBackColor, System.EventHandler click)
         {
             bButton = new Button
             {
@@ -55,6 +43,39 @@ namespace KnotsAndCrosses
             };
             bButton.Click += click;
             return bButton;
+        }
+        public Button addButton(Button[,] bButton, int x, int y, Point pLocation, Size sSize, Point tTag, String sText, Color cBackColor, System.EventHandler click)
+        {
+            bButton[x, y] = new Button
+            {
+                Location = pLocation,
+                Size = sSize,
+                Tag = tTag,
+                Text = sText,
+                BackColor = cBackColor
+            };
+            bButton[x, y].Click += click;
+            return bButton[x, y];
+        }
+
+        public MenuStrip addMenuStrip(String[][] mMenuItems, System.EventHandler click)
+        {
+            MenuStrip mMenuStrip = new MenuStrip();
+            ToolStripMenuItem mStripItem;
+            ToolStripMenuItem mStripSubItem;
+
+            for(int i = 0; i < mMenuItems.Length; i++)
+            {
+                mStripItem = new ToolStripMenuItem(mMenuItems[i][0]);
+                mMenuStrip.Items.Add(mStripItem);
+                for (int j = 1; j < mMenuItems[i].Length; j++)
+                {
+                    mStripSubItem = new ToolStripMenuItem(mMenuItems[i][j], null, click);
+                    mStripItem.DropDownItems.Add(mStripSubItem);
+                }
+            }
+
+            return mMenuStrip;
         }
     }
 }

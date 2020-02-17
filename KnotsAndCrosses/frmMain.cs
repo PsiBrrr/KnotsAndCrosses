@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace KnotsAndCrosses
 {
@@ -16,14 +17,25 @@ namespace KnotsAndCrosses
         {
             InitializeComponent();
         }
-        public frmMain(Size frmSize, FormStartPosition frmPostiion, String frmTitle, Boolean frmMaximizable)
+        public frmMain(Size frmSize, FormStartPosition frmPostiion, FormBorderStyle frmBorderStyle, String frmTitle, Boolean frmMaximizable, ArrayList frmControls)
         {
             InitializeComponent();
             Size = frmSize;
             StartPosition = frmPostiion;
             Text = frmTitle;
             MaximizeBox = frmMaximizable;
+            FormBorderStyle = frmBorderStyle;
+
+            foreach(Control i in frmControls)
+            {
+                Controls.Add(i);
+            }
         }
+
+        //public void addControls<T>(T control) where T : Control
+        //{
+        //    Controls.Add(control);
+        //}
 
     }
 }
