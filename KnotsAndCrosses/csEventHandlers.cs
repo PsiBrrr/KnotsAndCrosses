@@ -10,6 +10,9 @@ namespace KnotsAndCrosses
 {
     class csEventHandlers
     {
+        csLogic gmLogic = new csLogic();
+        int iPlayer = 1;
+
         public void MenuClick(object sender, System.EventArgs e)
         {
             ToolStripMenuItem mMenuItem = sender as ToolStripMenuItem;
@@ -17,7 +20,9 @@ namespace KnotsAndCrosses
             {
                 //MessageBox.Show(string.Concat("You have Clicked '", sender.ToString(), "' Menu"), "Menu Items Event", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                if (mMenuItem.ToString() == "Exit")
+                if (mMenuItem.ToString() == "New")
+                    gmLogic.Logic();
+                else if (mMenuItem.ToString() == "Exit")
                     Application.Exit();
             }
 
@@ -29,8 +34,25 @@ namespace KnotsAndCrosses
             if (bButton != null)
             {
                 Point index = (Point)bButton.Tag;
-                bButton.BackColor = Color.LightPink;
-                //MessageBox.Show(string.Concat("You have Clicked '", index, "' Button"), "Menu Items Event", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (gmLogic.bMultiPlayer)
+                {
+                    gmLogic.Add(index, iPlayer);
+                    if (iPlayer == 1)
+                        iPlayer = 2;
+                    else
+                        iPlayer = 1;
+                }
+
+                if (gmLogic.ReturnState(index) == 1)
+                    bButton.BackColor = Color.Green;
+                else if (gmLogic.ReturnState(index) == 2)
+                    bButton.BackColor = Color.Red;
+
+                gmLogic.Logic();
+
+                //if(i != 0)
+                    //MessageBox.Show(string.Concat("Player '", i, "' won"), "Menu Items Event", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
         }

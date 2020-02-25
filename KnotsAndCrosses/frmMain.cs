@@ -32,6 +32,7 @@ namespace KnotsAndCrosses
             }
         }
 
+        //Generic method to add control. Not needed but good example
         //public void addControls<T>(T control) where T : Control
         //{
         //    Controls.Add(control);

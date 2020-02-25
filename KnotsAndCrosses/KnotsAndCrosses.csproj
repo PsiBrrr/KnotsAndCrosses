@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="csEventHandlers.cs" />
+    <Compile Include="csLogic.cs" />
     <Compile Include="csWinItems.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
