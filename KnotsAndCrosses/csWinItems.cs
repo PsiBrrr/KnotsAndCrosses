@@ -57,7 +57,6 @@ namespace KnotsAndCrosses
             bButton[x, y].Click += click;
             return bButton[x, y];
         }
-
         public MenuStrip addMenuStrip(String[][] mMenuItems, System.EventHandler click)
         {
             MenuStrip mMenuStrip = new MenuStrip();

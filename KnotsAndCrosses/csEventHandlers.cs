@@ -18,15 +18,16 @@ namespace KnotsAndCrosses
             ToolStripMenuItem mMenuItem = sender as ToolStripMenuItem;
             if (mMenuItem != null)
             {
-                //MessageBox.Show(string.Concat("You have Clicked '", sender.ToString(), "' Menu"), "Menu Items Event", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //if (mMenuItem.ToString() == "New")
-                    //gmLogic.Logic();
-                //else 
-                if (mMenuItem.ToString() == "Exit")
+                if (mMenuItem.ToString() == "New")
+                {
+                    csLogic.Reset();
+                    csControls.ResetButton();
+                }
+                else if (mMenuItem.ToString() == "Exit")
+                {
                     Application.Exit();
+                }
             }
-
         }
 
         public void ButtonClick(object sender, System.EventArgs e)
@@ -38,7 +39,7 @@ namespace KnotsAndCrosses
 
                 if (gmLogic.bMultiPlayer)
                 {
-                    gmLogic.Add(index, iPlayer);
+                    csLogic.Add(index, iPlayer);
                     if (gmLogic.ReturnState(index) == 1)
                     {
                         bButton.BackColor = Color.Green;

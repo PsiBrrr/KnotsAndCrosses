@@ -9,7 +9,10 @@ namespace KnotsAndCrosses
 {
     class csLogic
     {
-        private int[,] iStateArray = new int[3, 3];
+        private static int[,] iStateArray = new int[3, 3];
+        private static Boolean[] bColumn = new Boolean[3];
+        private static Boolean[] bRow = new Boolean[3];
+        private static Boolean[] bDiagonal = new Boolean[3];
         //private Boolean bOnePlayer;
         private Boolean bTwoPlayer = true;
         
@@ -21,7 +24,7 @@ namespace KnotsAndCrosses
 
         public Boolean Logic(int iPlayer)
         {
-            if (CheckColumn(iPlayer) || CheckRow(iPlayer) || CheckDiagonalDownRight(iPlayer) || CheckDiagonalDownLeft(iPlayer))
+            if (CheckColumn(iPlayer) || CheckRow(iPlayer) /*|| CheckDiagonalDownRight(iPlayer) || CheckDiagonalDownLeft(iPlayer)*/)
                 return true;
             else
                 return false;
@@ -29,8 +32,6 @@ namespace KnotsAndCrosses
 
         private Boolean CheckColumn(int iPlayer)
         {
-            Boolean[] bColumn = new Boolean[3];
-
             for (int y = 0; y < iStateArray.GetLength(0); y++)
             {
                 for (int x = 0; x < iStateArray.GetLength(1); x++)
@@ -48,8 +49,6 @@ namespace KnotsAndCrosses
 
         private Boolean CheckRow(int iPlayer)
         {
-            Boolean[] bRow = new Boolean[3];
-
             for (int x = 0; x < iStateArray.GetLength(1); x++)
             {
                 for (int y = 0; y < iStateArray.GetLength(0); y++)
@@ -68,9 +67,7 @@ namespace KnotsAndCrosses
 
         private Boolean CheckDiagonalDownRight(int iPlayer) 
         {
-            Boolean[] bDiagonal = new Boolean[3];
-
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 if (iStateArray[i, i] == iPlayer)
                     bDiagonal[i] = true;
@@ -104,10 +101,18 @@ namespace KnotsAndCrosses
             return iStateArray[pIndex.X, pIndex.Y];
         }
 
-        public void Add(Point pIndex, int iPlayer)
+        public static void Add(Point pIndex, int iPlayer)
         {
             if(iStateArray[pIndex.X, pIndex.Y] == 0)
                 iStateArray[pIndex.X, pIndex.Y] = iPlayer;
+        }
+
+        public static void Reset()
+        {
+            Array.Clear(iStateArray, 0, 9);
+            Array.Clear(bColumn, 0, 3);
+            Array.Clear(bRow, 0, 3);
+            Array.Clear(bDiagonal, 0, 3);
         }
     }
 }

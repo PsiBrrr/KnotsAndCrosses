@@ -41,22 +41,9 @@ namespace KnotsAndCrosses
 
             ArrayList cControls = new ArrayList();
             cControls.Add(winItems.addMenuStrip(mMenuItems, evtEventHandler.MenuClick));
-
-            for (int y = 0; y < pArraySize.Y; y++)
-            {
-                for (int x = 0; x < pArraySize.X; x++)
-                {
-                    cControls.Add(winItems.addButton(bButton, x, y, new Point(pStartPosition.X + pIncrement.X, pStartPosition.Y + pIncrement.Y), bButtonSize, new Point(x, y), "", Color.LightGray, evtEventHandler.ButtonClick));
-
-                    pIncrement.X += bButtonSize.Width;
-                }
-                pIncrement.X = 0;
-                pIncrement.Y += bButtonSize.Height;
-            }
-
+            csControls.AddButton(cControls, pArraySize, pIncrement, pStartPosition, bButtonSize);
 
             frmMain frmMain = new frmMain(sFormSize, fPosition, fBorder, sTitle, bMaximizable, cControls);
-
             Application.Run(frmMain);
         }
 
