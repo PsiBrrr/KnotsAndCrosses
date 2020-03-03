@@ -12,46 +12,91 @@ namespace KnotsAndCrosses
         private int[,] iStateArray = new int[3, 3];
         //private Boolean bOnePlayer;
         private Boolean bTwoPlayer = true;
-
+        
         public Boolean bMultiPlayer
         {
             get { return bTwoPlayer; }
         }
 
 
-        public void Logic(int iPlayer)
+        public Boolean Logic(int iPlayer)
         {
-            //Boolean win = CheckRow(0);
+            if (CheckColumn(iPlayer) || CheckRow(iPlayer) || CheckDiagonalDownRight(iPlayer) || CheckDiagonalDownLeft(iPlayer))
+                return true;
+            else
+                return false;
         }
 
-        private Boolean CheckColumn(int iPlayer, int y)
+        private Boolean CheckColumn(int iPlayer)
         {
             Boolean[] bColumn = new Boolean[3];
 
-            for (int x = 0; x < iStateArray.GetLength(0); x++)
+            for (int y = 0; y < iStateArray.GetLength(0); y++)
             {
-                if (iStateArray[x, y] == iPlayer)
-                    bColumn[x] = true;
-                else
-                    continue;
-            } 
-
+                for (int x = 0; x < iStateArray.GetLength(1); x++)
+                {
+                    if (iStateArray[y, x] == iPlayer)
+                        bColumn[x] = true;
+                    else
+                        continue;
+                }
+                if (!bColumn.All(i => i))
+                    Array.Clear(bColumn, 0, iStateArray.GetLength(1));
+            }
             return bColumn.All(i => i);
         }
 
-        private Boolean CheckRow(int iPlayer, int x)
+        private Boolean CheckRow(int iPlayer)
         {
             Boolean[] bRow = new Boolean[3];
 
-            for (int y = 0; y < iStateArray.GetLength(1); y++)
+            for (int x = 0; x < iStateArray.GetLength(1); x++)
             {
-                if (iStateArray[x, y] == iPlayer)
-                    bRow[y] = true;
+                for (int y = 0; y < iStateArray.GetLength(0); y++)
+                {
+                    if (iStateArray[y, x] == iPlayer)
+                        bRow[y] = true;
+                    else
+                        continue;
+                }
+                if(!bRow.All(i => i))
+                    Array.Clear(bRow, 0, iStateArray.GetLength(0));
+            }
+
+            return bRow.All(i => i);
+        }
+
+        private Boolean CheckDiagonalDownRight(int iPlayer) 
+        {
+            Boolean[] bDiagonal = new Boolean[3];
+
+            for(int i = 0; i < 3; i++)
+            {
+                if (iStateArray[i, i] == iPlayer)
+                    bDiagonal[i] = true;
                 else
                     continue;
             }
 
-            return bRow.All(i => i);
+            return bDiagonal.All(i => i);
+        }
+
+        private Boolean CheckDiagonalDownLeft(int iPlayer)
+        {
+            Boolean[] bDiagonal = new Boolean[3];
+
+            for (int y = 0; y < iStateArray.GetLength(1); y++)
+            {
+                for (int x = iStateArray.GetLength(0) - 1; x > -1; x--)
+                {
+                    if (iStateArray[y, x] == iPlayer)
+                        bDiagonal[y] = true;
+                    else
+                        continue;
+                }
+            }
+
+            return bDiagonal.All(i => i);
         }
 
         public int ReturnState(Point pIndex)
