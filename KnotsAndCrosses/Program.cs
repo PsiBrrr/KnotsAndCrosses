@@ -19,9 +19,6 @@ namespace KnotsAndCrosses
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            csWinItems winItems = new csWinItems();
-            csEventHandlers evtEventHandler = new csEventHandlers();
-
             Boolean bMaximizable = false; //Allow Form to be Maximizable
             FormStartPosition fPosition = FormStartPosition.CenterScreen; //Form Starting Position
             FormBorderStyle fBorder = FormBorderStyle.FixedSingle; //Form Border Style
