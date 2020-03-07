@@ -49,5 +49,12 @@ namespace KnotsAndCrosses
                 }
             }
         }
+
+        public static ArrayList AddMenuStrip(ArrayList cControls, String[][] mMenuItems)
+        {
+            cControls.Add(winItems.addMenuStrip(mMenuItems, evtEventHandler.MenuClick));
+
+            return cControls;
+        }
     }
 }

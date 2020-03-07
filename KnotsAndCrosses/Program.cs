@@ -40,7 +40,7 @@ namespace KnotsAndCrosses
 
 
             ArrayList cControls = new ArrayList();
-            cControls.Add(winItems.addMenuStrip(mMenuItems, evtEventHandler.MenuClick));
+            csControls.AddMenuStrip(cControls, mMenuItems);
             csControls.AddButton(cControls, pArraySize, pIncrement, pStartPosition, bButtonSize);
 
             frmMain frmMain = new frmMain(sFormSize, fPosition, fBorder, sTitle, bMaximizable, cControls);

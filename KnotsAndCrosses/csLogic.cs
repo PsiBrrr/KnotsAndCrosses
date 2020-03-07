@@ -24,7 +24,7 @@ namespace KnotsAndCrosses
 
         public Boolean Logic(int iPlayer)
         {
-            if (CheckColumn(iPlayer) || CheckRow(iPlayer) /*|| CheckDiagonalDownRight(iPlayer) || CheckDiagonalDownLeft(iPlayer)*/)
+            if (CheckColumn(iPlayer) || CheckRow(iPlayer) || CheckDiagonalDownRight(iPlayer) || CheckDiagonalDownLeft(iPlayer))
                 return true;
             else
                 return false;
@@ -44,7 +44,7 @@ namespace KnotsAndCrosses
                 if (!bColumn.All(i => i))
                     Array.Clear(bColumn, 0, iStateArray.GetLength(1));
             }
-            return bColumn.All(i => i);
+            return bColumn.All(k => k); /*using k to prevent variable overlap*/
         }
 
         private Boolean CheckRow(int iPlayer)
@@ -62,7 +62,7 @@ namespace KnotsAndCrosses
                     Array.Clear(bRow, 0, iStateArray.GetLength(0));
             }
 
-            return bRow.All(i => i);
+            return bRow.All(k => k); /*using k to prevent variable overlap*/
         }
 
         private Boolean CheckDiagonalDownRight(int iPlayer) 
@@ -75,7 +75,7 @@ namespace KnotsAndCrosses
                     continue;
             }
 
-            return bDiagonal.All(i => i);
+            return bDiagonal.All(k => k); /*using k to prevent variable overlap*/
         }
 
         private Boolean CheckDiagonalDownLeft(int iPlayer)
@@ -93,7 +93,7 @@ namespace KnotsAndCrosses
                 }
             }
 
-            return bDiagonal.All(i => i);
+            return bDiagonal.All(k => k); /*using k to prevent variable overlap*/
         }
 
         public int ReturnState(Point pIndex)
