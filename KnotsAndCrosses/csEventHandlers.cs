@@ -18,7 +18,12 @@ namespace KnotsAndCrosses
             ToolStripMenuItem mMenuItem = sender as ToolStripMenuItem;
             if (mMenuItem != null)
             {
-                if (mMenuItem.ToString() == "New")
+                if (mMenuItem.ToString() == "New Player vs PC")
+                {
+                    csLogic.Reset();
+                    csControls.ResetButton();
+                }
+                else if (mMenuItem.ToString() == "New Player vs Player")
                 {
                     csLogic.Reset();
                     csControls.ResetButton();
@@ -52,7 +57,10 @@ namespace KnotsAndCrosses
                     }
 
                     if (gmLogic.Logic(iPlayer))
+                    {
                         MessageBox.Show(string.Concat("Player ", iPlayer, " has won!"), "Winner Winner", MessageBoxButtons.OK);
+                        csControls.DisableAllButton();
+                    }
 
                     if (iPlayer == 1)
                         iPlayer = 2;

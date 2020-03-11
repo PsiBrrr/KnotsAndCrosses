@@ -23,7 +23,6 @@ namespace KnotsAndCrosses
             FormStartPosition fPosition = FormStartPosition.CenterScreen; //Form Starting Position
             FormBorderStyle fBorder = FormBorderStyle.FixedSingle; //Form Border Style
             Point pArraySize = new Point(3, 3); //Array for game buttons
-            Point pIncrement = new Point(0, 0);
             Point pStartPosition = new Point(27, 27); //Start position for game buttons
             Size bButtonSize = new Size(96, 96);
             Size sFormSize = new Size(360, 360); //Form Size
@@ -32,13 +31,13 @@ namespace KnotsAndCrosses
             Button[,] bButton = new Button[pArraySize.X, pArraySize.Y]; //Button array for play area
             String[][] mMenuItems = new String[][] 
             {
-                new String[] { "Menu", "New", "Score", "Exit" } //First item is the menu item, the rest are the drop down
+                new String[] { "Menu", "New Player vs PC", "New Player vs Player", "Exit" } //First item is the menu item, the rest are the drop down
             };
 
 
             ArrayList cControls = new ArrayList();
             csControls.AddMenuStrip(cControls, mMenuItems);
-            csControls.AddButton(cControls, pArraySize, pIncrement, pStartPosition, bButtonSize);
+            csControls.AddButton(cControls, pArraySize, pStartPosition, bButtonSize);
 
             frmMain frmMain = new frmMain(sFormSize, fPosition, fBorder, sTitle, bMaximizable, cControls);
             Application.Run(frmMain);
