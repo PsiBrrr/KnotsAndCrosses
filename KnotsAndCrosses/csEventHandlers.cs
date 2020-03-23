@@ -11,7 +11,8 @@ namespace KnotsAndCrosses
     class csEventHandlers
     {
         csLogic gmLogic = new csLogic();
-        int iPlayer = 1;
+        private static int iPlayer = 1;
+        private static Boolean bGameStatus = false;
 
         public void MenuClick(object sender, System.EventArgs e)
         {
@@ -21,12 +22,17 @@ namespace KnotsAndCrosses
                 if (mMenuItem.ToString() == "New Player vs PC")
                 {
                     csLogic.Reset();
+                    csLogic.bMultiPlayer = false;
                     csControls.ResetButton();
+                    bGameStatus = false;
                 }
                 else if (mMenuItem.ToString() == "New Player vs Player")
                 {
                     csLogic.Reset();
+                    csLogic.bMultiPlayer = true;
+                    csControls.UpdateStatusStrip(String.Concat("Player " + csLogic.iCurrentPlayer.ToString() + " Start"));
                     csControls.ResetButton();
+                    bGameStatus = false;
                 }
                 else if (mMenuItem.ToString() == "Exit")
                 {
@@ -42,30 +48,38 @@ namespace KnotsAndCrosses
             {
                 Point index = (Point)bButton.Tag;
 
-                if (gmLogic.bMultiPlayer)
+                if (csLogic.bMultiPlayer)
                 {
-                    csLogic.Add(index, iPlayer);
-                    if (gmLogic.ReturnState(index) == 1)
+                    csLogic.Add(index);
+                    if (csLogic.ReturnState(index) == 1)
                     {
                         bButton.BackColor = Color.Green;
                         bButton.Enabled = false;
                     }
-                    else if (gmLogic.ReturnState(index) == 2)
+                    else if (csLogic.ReturnState(index) == 2)
                     {
                         bButton.BackColor = Color.Red;
                         bButton.Enabled = false;
                     }
 
-                    if (gmLogic.Logic(iPlayer))
+                    if (gmLogic.PlayerLogic())
                     {
-                        MessageBox.Show(string.Concat("Player ", iPlayer, " has won!"), "Winner Winner", MessageBoxButtons.OK);
+                        MessageBox.Show(string.Concat("Player ", csLogic.iCurrentPlayer, " has won!"), "Winner Winner", MessageBoxButtons.OK);
+                        csControls.UpdateStatusStrip(String.Concat("Player " + csLogic.iCurrentPlayer.ToString() + " has Won!"));
                         csControls.DisableAllButton();
+                        bGameStatus = true;
+                    }
+                    else if (gmLogic.TieLogic())
+                    {
+                        MessageBox.Show("Both Players have tied!", "Tie Tie", MessageBoxButtons.OK);
+                        csControls.UpdateStatusStrip(String.Concat("Tie Game!"));
+                        csControls.DisableAllButton();
+                        bGameStatus = true;
                     }
 
-                    if (iPlayer == 1)
-                        iPlayer = 2;
-                    else
-                        iPlayer = 1;
+                    csLogic.UpdatePlayer();
+                    if (!bGameStatus)
+                        csControls.UpdateStatusStrip(String.Concat("Player " + csLogic.iCurrentPlayer.ToString() + "'s turn"));
                 }
             }
         }

@@ -76,5 +76,16 @@ namespace KnotsAndCrosses
 
             return mMenuStrip;
         }
+        public StatusStrip addStatusStrip()
+        {
+            StatusStrip sStatusStrip = new StatusStrip();
+            ToolStripStatusLabel tToolStripStatusLabel = new ToolStripStatusLabel();
+
+            sStatusStrip.Dock = DockStyle.Bottom;
+            sStatusStrip.Items.Add(tToolStripStatusLabel);
+            tToolStripStatusLabel.Text = "Start";
+
+            return sStatusStrip;
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace KnotsAndCrosses
         private static Color bBackColor;
         private static Point pArrSize;
         private static Button[,] bButton;
+        private static StatusStrip sStatusStrip;
         private static csWinItems winItems;
         private static csEventHandlers evtEventHandler;
 
@@ -73,6 +74,26 @@ namespace KnotsAndCrosses
             cControls.Add(winItems.addMenuStrip(mMenuItems, evtEventHandler.MenuClick));
 
             return cControls;
+        }
+
+        public static ArrayList AddStatusStrip(ArrayList cControls)
+        {
+            winItems = new csWinItems();
+            sStatusStrip = winItems.addStatusStrip();
+
+            cControls.Add(sStatusStrip);
+
+            return cControls;
+        }
+
+        public static void UpdateStatusStrip(String sLabelText)
+        {
+            ToolStripStatusLabel tToolStripStatusLabel = new ToolStripStatusLabel();
+
+            sStatusStrip.Items.Clear();
+            sStatusStrip.Items.Add(tToolStripStatusLabel);
+
+            tToolStripStatusLabel.Text = sLabelText;
         }
     }
 }
